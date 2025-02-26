@@ -6,6 +6,8 @@ import com.example.tuto.service.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
@@ -22,5 +24,10 @@ public class ClientController {
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     public void creer(@RequestBody Client client) {
         this.clientService.creer(client);
+    }
+
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    public List<Client> rechercher() {
+        return this.clientService.rechercher();
     }
 }
