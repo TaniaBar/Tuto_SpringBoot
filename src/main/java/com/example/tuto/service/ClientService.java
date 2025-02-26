@@ -2,9 +2,8 @@ package com.example.tuto.service;
 
 import com.example.tuto.dao.ClientDao;
 import com.example.tuto.entities.Client;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import java.util.List;
 
@@ -18,7 +17,10 @@ public class ClientService {
     }
 
     public void creer(Client client) {
-        this.clientDao.save(client);
+        Client clientByEmail = this.clientDao.findByEmail(client.getEmail());
+        if (clientByEmail == null) {
+            this.clientDao.save(client);
+        }
     }
 
     public List<Client> rechercher() {
