@@ -13,7 +13,7 @@ public class Sentiment {
     private String texte;
     private TypeSentiment type;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "client_id")
     private Client client;
 

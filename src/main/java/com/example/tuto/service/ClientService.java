@@ -35,4 +35,13 @@ public class ClientService {
         }
         return null;
     }
+
+    public Client lireOuCreer(Client clientAChercher) {
+        Client clientByEmail = this.clientDao.findByEmail(clientAChercher.getEmail());
+        if (clientByEmail == null) {
+            this.clientDao.save(clientAChercher);
+        }
+        return clientByEmail;
+    }
+
 }
