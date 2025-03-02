@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -25,5 +26,13 @@ public class ClientService {
 
     public List<Client> rechercher() {
         return this.clientDao.findAll();
+    }
+
+    public Client lire(int id) {
+        Optional<Client> optionalClient = this.clientDao.findById(id);
+        if (optionalClient.isPresent()) {
+            return optionalClient.get();
+        }
+        return null;
     }
 }
