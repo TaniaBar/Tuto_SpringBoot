@@ -10,14 +10,16 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String email;
+    private String phone_number;
 
     public Client() {
 
     }
 
-    public Client(int id, String email) {
+    public Client(int id, String email, String phone_number) {
         this.id = id;
         this.email = email;
+        this.phone_number = phone_number;
     }
 
     public int getId() {
@@ -34,5 +36,13 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 }

@@ -44,4 +44,12 @@ public class ClientService {
         return clientByEmail;
     }
 
+    public void update(int id, Client client) {
+        Client clientDansLaBdd = this.lire(id);
+        if (clientDansLaBdd.getId() == client.getId()) {
+            clientDansLaBdd.setEmail(client.getEmail());
+            clientDansLaBdd.setPhone_number(client.getPhone_number());
+            this.clientDao.save(clientDansLaBdd);
+        }
+    }
 }

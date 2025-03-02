@@ -35,6 +35,12 @@ public class ClientController {
     public Client lire(@PathVariable int id) {
         return this.clientService.lire(id);
     }
+
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    @PutMapping(path = "{id}", consumes = APPLICATION_JSON_VALUE)
+    public void update(@PathVariable int id, @RequestBody Client client) {
+        this.clientService.update(id, client);
+    }
 }
 
 // https://www.youtube.com/watch?v=k6Nmt-l1Bzc min 1:24:02
