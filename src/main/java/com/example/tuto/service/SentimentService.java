@@ -5,7 +5,6 @@ import com.example.tuto.entities.Client;
 import com.example.tuto.entities.Sentiment;
 import com.example.tuto.enums.TypeSentiment;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -33,8 +32,12 @@ public class SentimentService {
         this.sentimentDao.save(sentiment);
     }
 
-    public List<Sentiment> rechercheSentiments() {
-        return this.sentimentDao.findAll();
+    public List<Sentiment> rechercheSentiments(TypeSentiment typeSentiment) {
+        if (typeSentiment == null) {
+            return this.sentimentDao.findAll();
+        } else {
+            return this.sentimentDao.findByType(typeSentiment);
+        }
     }
 
     public void deleteSentiment(int id) {

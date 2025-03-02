@@ -2,6 +2,7 @@ package com.example.tuto.controller;
 
 import com.example.tuto.dao.SentimentDao;
 import com.example.tuto.entities.Sentiment;
+import com.example.tuto.enums.TypeSentiment;
 import com.example.tuto.service.SentimentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,8 @@ public class SentimentController {
     }
 
     @GetMapping
-    public @ResponseBody List<Sentiment> getSentiment() {
-        return this.sentimentService.rechercheSentiments();
+    public @ResponseBody List<Sentiment> getSentiment(@RequestParam(required = false) TypeSentiment typeSentiment) {
+        return this.sentimentService.rechercheSentiments(typeSentiment);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
