@@ -30,4 +30,10 @@ public class SentimentController {
     public @ResponseBody List<Sentiment> getSentiment() {
         return this.sentimentService.rechercheSentiments();
     }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @DeleteMapping(path = "{id}")
+    public void deleteSentiment(@PathVariable int id) {
+        this.sentimentService.deleteSentiment(id);
+    }
 }

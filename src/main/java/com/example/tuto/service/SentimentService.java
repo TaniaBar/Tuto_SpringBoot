@@ -29,4 +29,8 @@ public class SentimentService {
     public List<Sentiment> rechercheSentiments() {
         return this.sentimentDao.findAll();
     }
+
+    public void deleteSentiment(int id) {
+        this.sentimentDao.deleteById(id);
+    }
 }
