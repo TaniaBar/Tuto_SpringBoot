@@ -6,6 +6,8 @@ import com.example.tuto.service.SentimentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
@@ -22,5 +24,10 @@ public class SentimentController {
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     public void creerSentiment(@RequestBody Sentiment sentiment) {
         this.sentimentService.creerSentiment(sentiment);
+    }
+
+    @GetMapping
+    public @ResponseBody List<Sentiment> getSentiment() {
+        return this.sentimentService.rechercheSentiments();
     }
 }

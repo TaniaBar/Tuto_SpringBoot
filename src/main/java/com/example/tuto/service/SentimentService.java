@@ -6,6 +6,8 @@ import com.example.tuto.entities.Sentiment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Service
 public class SentimentService {
 
@@ -22,5 +24,9 @@ public class SentimentService {
         Client client = this.clientService.lireOuCreer(sentiment.getClient());
         sentiment.setClient(client);
         this.sentimentDao.save(sentiment);
+    }
+
+    public List<Sentiment> rechercheSentiments() {
+        return this.sentimentDao.findAll();
     }
 }
