@@ -3,6 +3,7 @@ package com.example.tuto.service;
 import com.example.tuto.dao.SentimentDao;
 import com.example.tuto.entities.Client;
 import com.example.tuto.entities.Sentiment;
+import com.example.tuto.enums.TypeSentiment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,6 +24,12 @@ public class SentimentService {
 
         Client client = this.clientService.lireOuCreer(sentiment.getClient());
         sentiment.setClient(client);
+
+        if (sentiment.getTexte().contains("pas")) {
+            sentiment.setType(TypeSentiment.NEGATIF);
+        } else {
+            sentiment.setType(TypeSentiment.POSITIF);
+        }
         this.sentimentDao.save(sentiment);
     }
 
